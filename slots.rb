@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #slot choices - fruit, wild, scatter, multiplier, sticky, bonus, stacked
 #betting money then increases the payout, for $1 in, raises by $0.25
 #if you get 3 in a row, you win
