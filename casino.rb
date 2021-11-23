@@ -67,5 +67,28 @@ def menu
   end
 end
 
+def Play_Game
+  puts 'What game would you like to play?'
+  puts '1. Blackjack'
+  puts '2. Slots'
+  puts '3. Rock Paper Scissors'
+  puts '4. Exit'
+  choice = gets.strip
+  if choice = 1
+    @Blackjack
+  elsif choice = 2
+    @Slots
+  elsif choice = 3
+    @Rockpaperscissors
+  elsif choice = 4
+    puts 'Thanks for coming!'
+    exit
+  else
+    puts 'Error: please try again.'
+  end
+end
+
+  
+
 user_info
 menu
