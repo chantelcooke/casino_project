@@ -1,9 +1,8 @@
 
-require_relative 'casino'
-require_relative 'player'
+
 
 class Wallet
-  attr_accessor :money
+#   attr_accessor :money
     
   def initialize(money)
     @wallet = money

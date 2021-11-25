@@ -221,4 +221,4 @@ end
 
 #unsure how to keep the @player_money consistent, it doesn't seem to change when money is 
 #taken or added at different method points
->>>>>>> 5b29d5a (Fixed the .sample and all of the ways to win, still need to figure out player money)
+# >>>>>>> 5b29d5a (Fixed the .sample and all of the ways to win, still need to figure out player money)
