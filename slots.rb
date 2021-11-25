@@ -11,12 +11,13 @@
 # #will need to use the random code - rand(10); found out that .sample works for a mixture of integers and strings
 
 require_relative 'player.rb'
-require_relative 'wallet.rb'
+
+
+
 
 class Slots
   def initialize(player) #supposedly calls the player
     @player = player
-    # @wallet = Wallet
     welcome
   end
 
@@ -28,7 +29,7 @@ class Slots
        play_slots
       elsif #@wallet < 3
         puts "Sorry, you don't have enough money to play."
-        @Casino
+        Casino
       else
       end
     # @player.wallet.subtract_money(3)
@@ -81,7 +82,7 @@ class Slots
       else 
         puts "Thanks for coming!"
         puts "You have $#{@player.wallet} left to play. Enjoy the Casino!"
-        @Casino = Casino.new
+        @casino.menu
       end
     end
   end
@@ -96,7 +97,7 @@ class Slots
       play_slots
     else
       puts "Thanks for playing Slots, see you next time!"
-      @Casino
+      Casino
     end
   end
 
@@ -109,7 +110,7 @@ class Slots
       play_slots
      elsif @player.wallet < 3
        puts "Sorry, you don't have enough money to play."
-       @Casino
+       @menu
      else
      end
    @player.subtract_money(3)
