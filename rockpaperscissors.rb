@@ -1,18 +1,22 @@
 
 require_relative "menu.rb"
+require_relative 'player.rb'
+# require_relative 'casino.rb'
 #daniel williams worked on the rock paper scissors files
 
 
 class Rps
 
-    def initialize(w)
+    def initialize(player)
         @Rock = 1
         @Paper = 2
         @Scissors = 3
         @option = 0
         @computer_choice = 0
         @player_choice = 0
-        @wallet = w
+        # @wallet = w
+        @player = player
+        play
         # puts "in rps initialize wallet #{@wallet.current_balance}"
     end
 
@@ -47,7 +51,7 @@ class Rps
         end
 
         if (@player_choice == 5)
-          puts "Your current balance is #{@wallet.check_balance} dollars"
+          puts "Your current balance is #{@player.wallet} dollars"
         elsif (@computer_choice == @Rock && @player_choice == @Rock)
         # puts "case one"  
         puts "Round is a draw"
@@ -55,19 +59,19 @@ class Rps
         elsif (@computer_choice == @Rock && @player_choice == @Paper)
         # puts "case two"
         puts "Player wins"
-        @wallet.add_money(10)
+        @player.add_money(10)
         puts "You won 10 bucks"
         play
         elsif (@computer_choice == @Rock && @player_choice == @Scissors)
         # puts "case three"
         puts "Computer wins"
-        @wallet.take_money(2)
+        @player.subtract_money(2)
         puts "You lost 2 dollars"
         play
         elsif (@computer_choice == @Paper && @player_choice == @Rock)
         # puts "case four"  
         puts "computer wins"
-        @wallet.take_money(2)
+        @player.subtract_money(2)
         puts "You lost 2 dollars"
             play
         elsif (@computer_choice == @Paper && @player_choice == @Paper)
@@ -77,19 +81,19 @@ class Rps
         elsif (@computer_choice == @Paper && @player_choice == @Scissors)
         # puts "case six"
         puts "player wins"
-        @wallet.add_money(10)
+        @player.add_money(10)
         puts "You won 10 bucks"
         play 
         elsif (@computer_choice == @Scissors && @player_choice == @Rock)
         # puts "case seven"  
         puts "player wins"
-        @wallet.add_money(10)
+        @player.add_money(10)
         puts "You won 10 bucks"
             play
         elsif (@computer_choice == @Scissors && @player_choice == @Paper)
         # puts "case eight"
         puts "computer wins"
-        @wallet.take_money(2)
+        @player.subtract_money(2)
         puts "You lost 2 dollars"
         play
         elsif (@computer_choice == @Scissors && @player_choice == @Scissors)
@@ -101,7 +105,8 @@ class Rps
     end
 
     def view_wallet
-        @wallet.check_balance
+        put "You have $#{@player.wallet} left to play."
+        menu
     end
 
 
@@ -112,7 +117,7 @@ class Rps
           result
     end
     if @player_choice == 4
-        exit
+        @casino = Casino.new
     end
     end
 

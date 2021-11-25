@@ -5,7 +5,7 @@ class Blackjack
     def initialize(player)
       @player = player
       @blackjack = Game.new
-    #   play
+      play
     end 
     
     

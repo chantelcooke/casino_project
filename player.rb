@@ -1,19 +1,3 @@
-<<<<<<< HEAD
-require_relative "wallet.rb"
-
-
-class Player
-    attr_accessor :name, :wallet
-    def initialize
-        @wallet = Wallet.new(100)
-    #   puts "What is your name?"
-    #   @name = gets.strip
-    #   @money = 100.0
-    end
-end    
-    
-  
-=======
 
 class Player
   attr_accessor :name, :wallet #might not be necessary
@@ -49,4 +33,3 @@ class Player
   end
 
 end   
->>>>>>> 3e67a03 (updated player to have wallet working)

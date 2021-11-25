@@ -49,8 +49,8 @@ class Slots
 
 
     def roller_options #what options there are in the slot
-      # roller_options = ['Cherry', 'Wild', 'Bonus', 1, 2, 3, 4, 5, 6]
-      roller_options = ['Cherry', 'Cherry', 'Cherry']
+      roller_options = ['Cherry', 'Wild', 'Bonus', 1, 2, 3, 4, 5, 6]
+ 
     end
   
     def pull #getting the random output of the slot
