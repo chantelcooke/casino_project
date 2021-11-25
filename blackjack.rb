@@ -11,9 +11,9 @@ class Blackjack
     
     def play 
       @blackjack.dealing_cards
-      puts "Let's play! There is a $5 betting minimum, how much money are you betting?"
-      bet = gets.strip.to_i
-      if bet > 4
+      puts "Welcome to the game of Blackjack, #{@player.name}! It's $5 to play. You have $#{@player.wallet}"
+    
+      if @player.wallet > 4
         puts "Player's hand: "
         @blackjack.show_hand(@blackjack.player_hand)
         puts
@@ -31,10 +31,16 @@ class Blackjack
         puts "Dealer's hand: #{@blackjack.total(@blackjack.dealer_hand)}"
         @blackjack.show_hand(@blackjack.dealer_hand)
         @blackjack.results 
-        play
+        @casino.menu
       else 
-        puts "Insufficient amount, must be $5 or more." 
-        play
+        puts "Insufficient amount, must be $5 or more. Try again? y/n" 
+        try_again = gets.strip
+        if try_again == 'y'
+          play
+        else
+          puts "Have a good day!"  
+          @casino.menu
+        end  
       end  
     end  
   end

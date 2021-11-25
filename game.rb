@@ -1,5 +1,6 @@
 require_relative "deck.rb"
-
+require_relative "blackjack.rb"
+require_relative "player.rb"
 
 class Game
     attr_accessor :player_hand, :dealer_hand
@@ -56,52 +57,80 @@ class Game
   
     def players_hit(hand)
       player_hand_is_playing = true
-  
+    
       while player_hand_is_playing
-  
-        if total(hand) == 21
-          player_hand_is_playing = false
-          puts "You win! BLACKJACK!"
-          break
-        elsif total(hand) > 21
-          player_hand_is_playing = false
-          puts "Bust!"
-          
-        end
-  
+
         puts "Would you like to 'hit' or 'stay'?"
         answer = gets.chomp.downcase
         if answer == "hit"
-          @player_hand << @deck.cards.shift
+         @player_hand << @deck.cards.shift
           show_hand(hand)
           puts total(hand)
         elsif answer == "stay"
           player_hand_is_playing = false
           puts total(hand)
         end
+  
+        if total(hand) == 21
+          player_hand_is_playing = false
+          puts "You win! BLACKJACK!"
+          puts win
+          
+        elsif total(hand) > 21
+          player_hand_is_playing = false
+          puts "Bust!"
+          @player.subtract_money(5)
+          puts "You have $#{@player.wallet} left to play. Enjoy the Casino!"
+          @casino.menu
+          
+          
+          
+        end
+        
+  
+        # puts "Would you like to 'hit' or 'stay'?"
+        # answer = gets.chomp.downcase
+        # if answer == "hit"
+        #   @player_hand << @deck.cards.shift
+        #   show_hand(hand)
+        #   puts total(hand)
+        # elsif answer == "stay"
+        #   player_hand_is_playing = false
+        #   puts total(hand)
+        # end
       end
     end
   
-  
+    def win #winning a round
+      puts "You receive $5!"
+      @player.add_money(5)
+      puts "Your wallet is now $#{@player.wallet}"
+      @menu
+    
+    end
+    
+    
     def results
       if dealer_bust = (total(dealer_hand) > 21)
-        puts 'You Win! dealer BUST'
-        # bet *= -1 if !dealer_bust
-        # @player.money += bet
-        # puts "You now have $#{@player.money} in your wallet"
+        puts 'You Win! Dealer BUST.'
+        puts win
+
       elsif dealer_lose = ( total(player_hand) > total(dealer_hand) ) && (total(player_hand) <= 21)
         puts "You win! Dealer loses."
-        # bet *= -1 if !dealer_lose
-        # @player.money += bet
-        # puts "You now have $#{@player.money} in your wallet"
+        puts win
+
       elsif dealer_win = ( total(dealer_hand) > total(player_hand) ) && (total(dealer_hand) <= 21)
         puts "You lose! Dealer wins."
-        # bet *= -1 if !dealer_win
-        # @player.money += bet
-        # puts "You now have $#{@player.money} in your wallet"
+        @player.subtract_money(5)
+        puts "You have $#{@player.wallet} left to play. Enjoy the Casino!"
+        @casino.menu
+
       elsif tie = (total(dealer_hand) == total(player_hand))
-        puts "Tie :("
+        puts "Tie. You have $#{@player.wallet} left to play. Enjoy the Casino!"
+        @casino.menu
+        
       end
+    
     end
   
   end
