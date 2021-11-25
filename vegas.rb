@@ -1,13 +1,13 @@
-require_relative "casino.rb"
+# require_relative "casino.rb"
 
-def vegas
+# def vegas
     
-    @casino = Casino.new
-    @casino.user_info
-    @casino.menu
-    @casino.play_game
+#     @casino = Casino.new
+#     @casino.user_info
+#     @casino.menu
+#     @casino.play_game
     
-end
+# end
 
 
-vegas
+# vegas
